@@ -137,4 +137,11 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
+# IDE-Specific Ignores
 .vscode/settings.json
+.idea/
+*.iml
+
+# Local development override files
+docker-compose.dev.yml
+Dockerfile-dev
