@@ -50,9 +50,7 @@ PRONOUN_OPTIONS = [
     ),
 ]
 
-DMA_API_URL = (
-    "https://discordmoderatoracademy.zendesk.com/api/v2/help_center/en-us/articles"
-)
+DMA_API_URL = "https://discordmoderatoracademy.zendesk.com/api/v2/help_center/en-us/articles"
 DMA_TITLE_REGEX = r"^\d\d\d:\s.*$"
 DMA_SERIES_NAMES = {
     1: "Basics",
@@ -83,8 +81,4 @@ AUTOROLE_CONFIG = {
     },
 }
 
-BOT_DEVS = [
-    165023948638126080,
-    141288766760288256,
-    249287049482338305
-]
+BOT_DEVS = [165023948638126080, 141288766760288256, 249287049482338305]

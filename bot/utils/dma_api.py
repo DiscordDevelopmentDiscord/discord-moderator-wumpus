@@ -33,9 +33,7 @@ def get_api():
                             article["name"] = name
                             soup = BeautifulSoup(item["body"], "html.parser")
 
-                            placeholder = (
-                                f"... [continue reading](https://dis.gd/dma{number})"
-                            )
+                            placeholder = f"... [continue reading](https://dis.gd/dma{number})"
                             article["text"] = textwrap.shorten(
                                 soup.p.text, 800, placeholder=placeholder
                             )

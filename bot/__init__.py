@@ -6,9 +6,7 @@ from loguru import logger
 
 class Bot(commands.Bot):
     async def on_ready(self):
-        logger.info(
-            f"Logged in as {self.user} on {len(self.guilds)} guilds."
-        )
+        logger.info(f"Logged in as {self.user} on {len(self.guilds)} guilds.")
 
 
 bot = Bot(

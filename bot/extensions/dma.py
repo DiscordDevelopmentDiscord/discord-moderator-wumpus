@@ -6,10 +6,7 @@ from discord_slash.context import SlashContext
 from discord_slash.utils.manage_commands import create_option
 
 from bot import Bot
-from bot.constants import (
-    DMA_CATEGORY_NAMES,
-    DMA_SERIES_NAMES
-)
+from bot.constants import DMA_CATEGORY_NAMES, DMA_SERIES_NAMES
 from bot.utils import dma_api
 
 
@@ -76,9 +73,7 @@ class DMA(Cog):
     async def _dma_series(self, ctx: SlashContext, number: int):
         if number in [1, 2, 3, 4, 5]:
             results = await dma_api.get_series(number)
-            embed = Embed(
-                colour=Colour.blurple(), description=f"*{DMA_SERIES_NAMES[number]}*"
-            )
+            embed = Embed(colour=Colour.blurple(), description=f"*{DMA_SERIES_NAMES[number]}*")
             embed.set_author(name=f"Discord Moderator Academy: Series {number}")
             for result in results:
                 embed.add_field(
@@ -106,9 +101,7 @@ class DMA(Cog):
     async def _dma_category(self, ctx: SlashContext, number: int):
         if number in [0, 1, 2, 3, 4, 5]:
             results = await dma_api.get_category(number)
-            embed = Embed(
-                colour=Colour.blurple(), description=f"*{DMA_CATEGORY_NAMES[number]}*"
-            )
+            embed = Embed(colour=Colour.blurple(), description=f"*{DMA_CATEGORY_NAMES[number]}*")
             embed.set_author(name=f"Discord Moderator Academy: Category {number}")
             for result in results:
                 embed.add_field(
@@ -134,9 +127,7 @@ class DMA(Cog):
         ],
     )
     async def _dma_search(self, ctx: SlashContext, terms: str):
-        embed = Embed(
-            colour=Colour.blurple(), description=f"Search results for `{terms}`"
-        )
+        embed = Embed(colour=Colour.blurple(), description=f"Search results for `{terms}`")
         embed.set_author(name="DMA Search")
         for result in await dma_api.search_term(terms):
             embed.add_field(

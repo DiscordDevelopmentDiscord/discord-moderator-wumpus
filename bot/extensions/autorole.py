@@ -35,8 +35,7 @@ class AutoRole(Cog):
         role_config = AUTOROLE_CONFIG[guild.id]
 
         has_job_role = (
-            role_config["MODERATOR"] in role_ids
-            or role_config["DISCORD"] in member.roles
+            role_config["MODERATOR"] in role_ids or role_config["DISCORD"] in member.roles
         )
         is_roled = role_config["MEMBER"] in role_ids and has_job_role
 

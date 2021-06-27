@@ -57,9 +57,7 @@ class Pronouns(commands.Cog):
         logger.info(f"Removing {role} to {ctx.author}")
         await ctx.send("Pronouns updated! :tada:", hidden=True)
 
-    @cog_ext.cog_subcommand(
-        base="pronouns", name="about", description="Information on pronouns"
-    )
+    @cog_ext.cog_subcommand(base="pronouns", name="about", description="Information on pronouns")
     async def pronoun_roles_about(self, ctx: SlashContext):
         pronouns = "\n".join(["• " + pronoun["name"] for pronoun in PRONOUN_OPTIONS])
 
