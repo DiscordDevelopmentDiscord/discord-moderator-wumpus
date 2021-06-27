@@ -26,6 +26,10 @@ After installing poetry run `poetry install` to set up your virtual environment 
 
 To start the bot run `poetry run task start`.
 
-### Contributing & Support
+## Style Guide
+
+This project uses [black](https://black.readthedocs.io/en/stable/) for PEP8 & Python style compliance. You can run it with `poetry run black bot` to lint the bot source code & update any non-complying files.
+
+## Contributing & Support
 
 Visit [ddd.jb3.dev](https://ddd.jb3.dev/) if you are in an official Discord Moderation community to reach the Core Developers.
