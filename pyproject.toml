@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "bot"
+version = "0.1.0"
+description = "Utility bot for DMD/MMC communities."
+authors = ["Joe Banks <joseph@josephbanks.me>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+loguru = "^0.5.3"
+python-dotenv = "^0.17.1"
+"discord.py" = "^1.7.2"
+discord-py-slash-command = "^1.1.2"
+taskipy = "^1.8.1"
+beautifulsoup4 = "^4.9.3"
+aiohttp = "^3.7.4"
+python-dateutil = "^2.8.1"
+arrow = "^1.1.0"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^3.9.2"
+black = {version = "^21.5b1", allow-prereleases = true}
+
+[tool.taskipy.tasks]
+start = "python -m bot"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
