@@ -5,7 +5,7 @@ services:
     env_file: .env
     environment:
       REDIS_URL: "redis://redis:6379/1"
-    links:
+    depends_on:
       - redis
 
   redis:
