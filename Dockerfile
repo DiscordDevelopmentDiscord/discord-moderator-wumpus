@@ -1,4 +1,4 @@
-FROM python:3.9
+FROM python:3.9-slim
 
 # Set this both here and in pyproject.toml
 ENV POETRY_VERSION=1.0.0
