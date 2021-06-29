@@ -2,7 +2,7 @@ from discord.ext.commands import Cog
 from discord import Member, Message
 from loguru import logger
 
-from bot import Bot
+from bot import DiscordModeratorWumpus
 from bot.constants import AUTOROLE_CONFIG
 
 
@@ -58,5 +58,5 @@ class AutoRole(Cog):
             logger.info(f"Gave member + Moderator roles to {member}")
 
 
-def setup(bot: Bot):
+def setup(bot: DiscordModeratorWumpus):
     bot.add_cog(AutoRole(bot))

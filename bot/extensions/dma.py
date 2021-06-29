@@ -5,7 +5,7 @@ from discord_slash import cog_ext
 from discord_slash.context import SlashContext
 from discord_slash.utils.manage_commands import create_option
 
-from bot import Bot
+from bot import DiscordModeratorWumpus
 from bot.constants import DMA_CATEGORY_NAMES, DMA_SERIES_NAMES
 from bot.utils import dma_api
 
@@ -27,7 +27,7 @@ def article_to_url(articles):
 class DMA(Cog):
     """Commands for fetching information from the Discord Moderator Academy"""
 
-    def __init__(self, bot: Bot) -> None:
+    def __init__(self, bot: DiscordModeratorWumpus) -> None:
         self.bot = bot
 
     @cog_ext.cog_subcommand(
@@ -138,5 +138,5 @@ class DMA(Cog):
         await ctx.send(embed=embed)
 
 
-def setup(bot: Bot) -> None:
+def setup(bot: DiscordModeratorWumpus) -> None:
     bot.add_cog(DMA(bot))
