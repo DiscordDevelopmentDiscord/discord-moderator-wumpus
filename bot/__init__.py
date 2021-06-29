@@ -4,12 +4,12 @@ from discord_slash import SlashCommand
 from loguru import logger
 
 
-class Bot(commands.Bot):
+class DiscordModeratorWumpus(commands.Bot):
     async def on_ready(self):
         logger.info(f"Logged in as {self.user} on {len(self.guilds)} guilds.")
 
 
-bot = Bot(
+bot = DiscordModeratorWumpus(
     command_prefix="!",
     intents=Intents.all(),
     help_command=None,
