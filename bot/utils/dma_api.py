@@ -85,7 +85,9 @@ async def get_search_api(query_string: str = None, series_number: int = None):
 
 @get_api()
 async def get_category(category, articles):
-    return [item for item in articles if item["category"] == str(category)]
+    items = [item for item in articles if item["category"] == str(category)]
+    return sorted(items, key=lambda x: (x["series"], x["category"], x["digit"]))
+
 
 
 async def get_article(number):
