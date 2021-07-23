@@ -49,7 +49,7 @@ def get_api():
 
 async def get_search_api(query_string: str = None, series_number: int = None):
     query = "?query={" + re.sub(DMA_QUERY_REGEX, "", query_string) + "}" if query_string is not None else ""
-    series = f'{"?section=" + DMA_SERIES_IDS[series_number] if series_number is not None else ""}'
+    series = "?section=" + DMA_SERIES_IDS[series_number] if series_number is not None else ""
     request_url = f'{DMA_API_SEARCH_URL}{query}{series}'
     try:
         async with aiohttp.ClientSession() as sess:
