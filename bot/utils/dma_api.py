@@ -89,7 +89,6 @@ async def get_category(category, articles):
     return sorted(items, key=lambda x: (x["series"], x["category"], x["digit"]))
 
 
-
 async def get_article(number):
     articles = await get_search_api(query_string=str(number))
     return [
