@@ -57,6 +57,8 @@ async def get_search_api(query_string: str = None, series_number: int = None):
         url_params["section"] = series_number
 
     request_url = f'{DMA_API_SEARCH_URL}?{parse.urlencode(url_params)}'
+    
+    results_parse = []
     try:
         async with aiohttp.ClientSession() as sess:
             response = await sess.get(request_url)
@@ -64,7 +66,6 @@ async def get_search_api(query_string: str = None, series_number: int = None):
             data = await response.json()
 
             results = data["results"]
-            results_parse = []
 
             for item in results:
                 if re.search(DMA_TITLE_REGEX, item["name"]):
