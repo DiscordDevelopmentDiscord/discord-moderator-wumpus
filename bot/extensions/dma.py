@@ -72,7 +72,7 @@ class DMA(Cog):
     )
     async def _dma_series(self, ctx: SlashContext, number: int):
         if number in [1, 2, 3, 4, 5]:
-            results = await dma_api.get_series(number)
+            results = await dma_api.get_search_api(series_number=number)
             embed = Embed(colour=Colour.blurple(), description=f"*{DMA_SERIES_NAMES[number]}*")
             embed.set_author(name=f"Discord Moderator Academy: Series {number}")
             for result in results:
@@ -129,7 +129,7 @@ class DMA(Cog):
     async def _dma_search(self, ctx: SlashContext, terms: str):
         embed = Embed(colour=Colour.blurple(), description=f"Search results for `{terms}`")
         embed.set_author(name="DMA Search")
-        for result in await dma_api.search_term(terms):
+        for result in await dma_api.get_search_api(query_string=terms):
             embed.add_field(
                 name=article_to_name([result])[0],
                 value=article_to_url([result])[0],

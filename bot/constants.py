@@ -51,13 +51,23 @@ PRONOUN_OPTIONS = [
 ]
 
 DMA_API_URL = "https://discordmoderatoracademy.zendesk.com/api/v2/help_center/en-us/articles"
+DMA_API_SEARCH_URL = "https://discordmoderatoracademy.zendesk.com/api/v2/help_center/articles/search"
+
 DMA_TITLE_REGEX = r"^\d\d\d:\s.*$"
+DMA_QUERY_REGEX = r"[{}]"
 DMA_SERIES_NAMES = {
     1: "Basics",
     2: "Setup and Function",
     3: "Advanced Community Management",
     4: "Moderation Seminars",
     5: "Graduate Classes",
+}
+DMA_SERIES_IDS = {
+    1: "360011920213",
+    2: "360010792534",
+    3: "360011920293",
+    4: "360011920313",
+    5: "123456789012",  # Fake series ID as no 5 exist yet.
 }
 DMA_CATEGORY_NAMES = {
     0: "Foundational Understanding",
