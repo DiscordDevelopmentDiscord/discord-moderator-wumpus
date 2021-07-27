@@ -3,6 +3,7 @@ import re
 import textwrap
 
 import aiohttp
+from urllib import parse
 from bs4 import BeautifulSoup
 from loguru import logger
 
@@ -48,9 +49,14 @@ def get_api():
 
 
 async def get_search_api(query_string: str = None, series_number: int = None):
-    query = "?query={" + re.sub(DMA_QUERY_REGEX, "", query_string) + "}" if query_string is not None else ""
-    series = "?section=" + DMA_SERIES_IDS[series_number] if series_number is not None else ""
-    request_url = f'{DMA_API_SEARCH_URL}{query}{series}'
+    url_params = {}
+    if query_string:
+        url_params["query"] = f"{{{query_string}}}"
+
+    if series_number:
+        url_params["section"] = series_number
+
+    request_url = f'{DMA_API_SEARCH_URL}?{parse.urlencode(url_params)}'
     try:
         async with aiohttp.ClientSession() as sess:
             response = await sess.get(request_url)
