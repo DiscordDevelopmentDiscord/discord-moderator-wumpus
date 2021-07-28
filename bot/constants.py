@@ -1,4 +1,5 @@
 from discord_slash.utils.manage_commands import create_choice
+from calendar import monthrange
 
 GUILDS_PRONOUN_ROLES = {
     # Discord Developer Discord
@@ -90,5 +91,57 @@ AUTOROLE_CONFIG = {
         "MEMBER": 687070754671558718,
     },
 }
+
+
+def get_days(year: int, month: int):
+    return monthrange(year, month)[1]
+
+
+TIMESTAMP_MAKE_BOUNDARIES = [
+    {
+        "name": "year",
+        "min": 1,
+        "max": 9998
+    },
+    {
+        "name": "month",
+        "min": 1,
+        "max": 12
+    },
+    {
+        "name": "day",
+        "min": 1,
+        "max": get_days
+    },
+    {
+        "name": "hour",
+        "min": 0,
+        "max": 23
+    },
+    {
+        "name": "minute",
+        "min": 0,
+        "max": 59
+    },
+    {
+        "name": "utc",
+        "min": -12,
+        "max": 14
+    },
+]
+TIMESTAMP_RELATIVE_BOUNDARIES = [
+    {
+        "name": "days",
+        "range": 730500  # +- 2000 years, keeping well between 1 and 9999 for year
+    },
+    {
+        "name": "hours",
+        "range": 23
+    },
+    {
+        "name": "minutes",
+        "range": 59
+    },
+]
 
 BOT_DEVS = [165023948638126080, 141288766760288256, 249287049482338305]
