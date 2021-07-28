@@ -52,7 +52,9 @@ PRONOUN_OPTIONS = [
 ]
 
 DMA_API_URL = "https://discordmoderatoracademy.zendesk.com/api/v2/help_center/en-us/articles"
-DMA_API_SEARCH_URL = "https://discordmoderatoracademy.zendesk.com/api/v2/help_center/articles/search"
+DMA_API_SEARCH_URL = (
+    "https://discordmoderatoracademy.zendesk.com/api/v2/help_center/articles/search"
+)
 
 DMA_TITLE_REGEX = r"^\d\d\d:\s.*$"
 DMA_QUERY_REGEX = r"[{}]"
@@ -98,50 +100,17 @@ def get_days(year: int, month: int):
 
 
 TIMESTAMP_MAKE_BOUNDARIES = [
-    {
-        "name": "year",
-        "min": 1,
-        "max": 9998
-    },
-    {
-        "name": "month",
-        "min": 1,
-        "max": 12
-    },
-    {
-        "name": "day",
-        "min": 1,
-        "max": get_days
-    },
-    {
-        "name": "hour",
-        "min": 0,
-        "max": 23
-    },
-    {
-        "name": "minute",
-        "min": 0,
-        "max": 59
-    },
-    {
-        "name": "utc",
-        "min": -12,
-        "max": 14
-    },
+    {"name": "year", "min": 1, "max": 9998},
+    {"name": "month", "min": 1, "max": 12},
+    {"name": "day", "min": 1, "max": get_days},
+    {"name": "hour", "min": 0, "max": 23},
+    {"name": "minute", "min": 0, "max": 59},
+    {"name": "utc", "min": -12, "max": 14},
 ]
 TIMESTAMP_RELATIVE_BOUNDARIES = [
-    {
-        "name": "days",
-        "range": 730500  # +- 2000 years, keeping well between 1 and 9999 for year
-    },
-    {
-        "name": "hours",
-        "range": 23
-    },
-    {
-        "name": "minutes",
-        "range": 59
-    },
+    {"name": "days", "range": 730500},  # +- 2000 years, keeping well between 1 and 9999 for year
+    {"name": "hours", "range": 23},
+    {"name": "minutes", "range": 59},
 ]
 
 BOT_DEVS = [165023948638126080, 141288766760288256, 249287049482338305]
