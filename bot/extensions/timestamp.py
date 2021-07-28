@@ -48,7 +48,7 @@ class Timestamp(Cog):
                     create_choice(10, "October"),
                     create_choice(11, "November"),
                     create_choice(12, "December"),
-                ]
+                ],
             ),
             create_option(
                 name="day",
@@ -87,16 +87,27 @@ class Timestamp(Cog):
                     create_choice("f", "Short Date/Time"),
                     create_choice("F", "Long Date/Time"),
                     create_choice("R", "Relative Time"),
-
-                ]
-            )
+                ],
+            ),
         ],
     )
-    async def _timestamp_make(self, ctx: SlashContext, year: int, month: int, day: int, hour: int, minute: int, utc: int = 0, tag: str = "f"):
+    async def _timestamp_make(
+        self,
+        ctx: SlashContext,
+        year: int,
+        month: int,
+        day: int,
+        hour: int,
+        minute: int,
+        utc: int = 0,
+        tag: str = "f",
+    ):
         validity_check = timestamp_validity.make_data_validity(year, month, day, hour, minute, utc)
 
         if len(validity_check) == 0:
-            dt = datetime(year, month, day, hour, minute, 0, 0, tzinfo=dateutil.tz.tzoffset(None, 3600 * utc))
+            dt = datetime(
+                year, month, day, hour, minute, 0, 0, tzinfo=dateutil.tz.tzoffset(None, 3600 * utc)
+            )
             ts = int(dt.timestamp())
             embed = Embed(title="Timestamp Created", color=Colour.blurple())
             embed.add_field(name="Output", value=f"<t:{ts}:{tag}>")
@@ -116,7 +127,7 @@ class Timestamp(Cog):
                 embed.add_field(
                     name="Field Error",
                     value=f'You inputted {error["input"]} for field `{error["name"]}`. Field must be between '
-                          f'{error["min"]} and {error["max"]} inclusively{extra}.',
+                    f'{error["min"]} and {error["max"]} inclusively{extra}.',
                     inline=False,
                 )
             await ctx.send(embed=embed, hidden=True)
@@ -129,7 +140,9 @@ class Timestamp(Cog):
     async def _timestamp_now(self, ctx: SlashContext):
         time = datetime.utcnow()
         embed = Embed(title="Current Time", color=Colour.blurple())
-        embed.add_field(name="UTC Time", value=time.strftime("%A, %B %d, %Y %-I:%M %p"), inline=False)
+        embed.add_field(
+            name="UTC Time", value=time.strftime("%A, %B %d, %Y %-I:%M %p"), inline=False
+        )
         embed.add_field(name="Local Time", value=f"<t:{int(time.timestamp())}:F>", inline=False)
         await ctx.send(embed=embed, hidden=True)
 
@@ -169,19 +182,22 @@ class Timestamp(Cog):
                     create_choice("f", "Short Date/Time"),
                     create_choice("F", "Long Date/Time"),
                     create_choice("R", "Relative Time"),
-
-                ]
-            )
-        ]
+                ],
+            ),
+        ],
     )
-    async def _timestamp_relative(self, ctx: SlashContext, days: int = 0, hours: int = 0, minutes: int = 0, tag: str = "f"):
+    async def _timestamp_relative(
+        self, ctx: SlashContext, days: int = 0, hours: int = 0, minutes: int = 0, tag: str = "f"
+    ):
         validity_check = timestamp_validity.relative_data_validity(days, hours, minutes)
         if len(validity_check) == 0:
             time = datetime.utcnow()
             td = timedelta(days=days, hours=hours, minutes=minutes)
             time = time + td
             ts = int(time.timestamp())
-            embed = Embed(title="Relative Time", color=Colour.blurple(), description=f"Time shifted by {td}")
+            embed = Embed(
+                title="Relative Time", color=Colour.blurple(), description=f"Time shifted by {td}"
+            )
             embed.add_field(name="Output", value=f"<t:{ts}:{tag}>", inline=False)
             embed.add_field(name="Copyable", value=f"\<t:{ts}:{tag}\>", inline=False)
             await ctx.send(embed=embed, hidden=True)
@@ -192,7 +208,7 @@ class Timestamp(Cog):
                 embed.add_field(
                     name="Field Error",
                     value=f'You inputted {error["input"]} for field `{error["name"]}`. Field must be within '
-                          f'the range +-{error["range"]}.',
+                    f'the range +-{error["range"]}.',
                     inline=False,
                 )
             await ctx.send(embed=embed, hidden=True)
