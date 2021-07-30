@@ -54,7 +54,7 @@ async def get_search_api(query_string: str = None, series_number: int = None):
         url_params["query"] = f"{{{query_string}}}"
 
     if series_number:
-        url_params["section"] = series_number
+        url_params["section"] = DMA_SERIES_IDS[series_number]
 
     request_url = f'{DMA_API_SEARCH_URL}?{parse.urlencode(url_params)}'
     
