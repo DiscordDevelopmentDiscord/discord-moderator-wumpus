@@ -102,7 +102,15 @@ class Timestamp(Cog):
         utc: int = 0,
         tag: str = "f",
     ):
-        validity_check = timestamp_validity.make_data_validity(year, month, day, hour, minute, utc)
+        input_data = {
+            "year": year,
+            "month": month,
+            "day": day,
+            "hour": hour,
+            "minute": minute,
+            "utc": utc,
+        }
+        validity_check = timestamp_validity.make_data_validity(input_data)
 
         if len(validity_check) == 0:
             dt = datetime(
@@ -189,7 +197,8 @@ class Timestamp(Cog):
     async def _timestamp_relative(
         self, ctx: SlashContext, days: int = 0, hours: int = 0, minutes: int = 0, tag: str = "f"
     ):
-        validity_check = timestamp_validity.relative_data_validity(days, hours, minutes)
+        input_data = {"days": days, "hours": hours, "minutes": minutes}
+        validity_check = timestamp_validity.relative_data_validity(input_data)
         if len(validity_check) == 0:
             time = datetime.utcnow()
             td = timedelta(days=days, hours=hours, minutes=minutes)
