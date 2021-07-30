@@ -70,7 +70,7 @@ DMA_SERIES_IDS = {
     2: "360010792534",
     3: "360011920293",
     4: "360011920313",
-    5: "123456789012",  # Fake series ID as no 5 exist yet.
+    5: "4405269416471",
 }
 DMA_CATEGORY_NAMES = {
     0: "Foundational Understanding",
