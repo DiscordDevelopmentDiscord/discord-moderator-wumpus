@@ -8,9 +8,8 @@ from discord_slash.utils.manage_commands import create_option, create_choice
 from bot import DiscordModeratorWumpus
 from bot.utils import timestamp_validity
 
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 import dateutil.tz
-from time import timezone
 from calendar import month_name
 
 
@@ -117,7 +116,6 @@ class Timestamp(Cog):
             dt = datetime(
                 year, month, day, hour, minute, 0, 0, tzinfo=dateutil.tz.tzoffset(None, 3600 * utc)
             )
-            dt -= timedelta(seconds=timezone)
             ts = int(dt.timestamp())
             embed = Embed(title="Timestamp Created", color=Colour.blurple())
             embed.add_field(name="Output", value=f"<t:{ts}:{tag}>")
@@ -149,11 +147,11 @@ class Timestamp(Cog):
     )
     async def _timestamp_now(self, ctx: SlashContext):
         time = datetime.utcnow()
+        time.replace(tzinfo=datetime.utc)
         embed = Embed(title="Current Time", color=Colour.blurple())
         embed.add_field(
             name="UTC Time", value=time.strftime("%A, %B %d, %Y %-I:%M %p"), inline=False
         )
-        time -= timedelta(seconds=timezone)
         embed.add_field(name="Local Time", value=f"<t:{int(time.timestamp())}:F>", inline=False)
         await ctx.send(embed=embed, hidden=True)
 
@@ -206,6 +204,9 @@ class Timestamp(Cog):
             time = datetime.utcnow()
             td = timedelta(days=days, hours=hours, minutes=minutes)
             time = time + td
+            
+            time.replace(tzinfo=timestamp.utc)
+            
             ts = int(time.timestamp())
             embed = Embed(
                 title="Relative Time", color=Colour.blurple(), description=f"Time shifted by {td}"
