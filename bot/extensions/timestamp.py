@@ -147,7 +147,7 @@ class Timestamp(Cog):
     )
     async def _timestamp_now(self, ctx: SlashContext):
         time = datetime.utcnow()
-        time.replace(tzinfo=datetime.utc)
+        time.replace(tzinfo=timezone.utc)
         embed = Embed(title="Current Time", color=Colour.blurple())
         embed.add_field(
             name="UTC Time", value=time.strftime("%A, %B %d, %Y %-I:%M %p"), inline=False
