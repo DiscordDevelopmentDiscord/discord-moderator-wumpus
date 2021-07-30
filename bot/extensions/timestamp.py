@@ -10,6 +10,7 @@ from bot.utils import timestamp_validity
 
 from datetime import datetime, timedelta
 import dateutil.tz
+from time import timezone
 from calendar import month_name
 
 
@@ -116,6 +117,7 @@ class Timestamp(Cog):
             dt = datetime(
                 year, month, day, hour, minute, 0, 0, tzinfo=dateutil.tz.tzoffset(None, 3600 * utc)
             )
+            dt -= timedelta(seconds=timezone())
             ts = int(dt.timestamp())
             embed = Embed(title="Timestamp Created", color=Colour.blurple())
             embed.add_field(name="Output", value=f"<t:{ts}:{tag}>")
@@ -151,6 +153,7 @@ class Timestamp(Cog):
         embed.add_field(
             name="UTC Time", value=time.strftime("%A, %B %d, %Y %-I:%M %p"), inline=False
         )
+        time -= timedelta(seconds=timezone())
         embed.add_field(name="Local Time", value=f"<t:{int(time.timestamp())}:F>", inline=False)
         await ctx.send(embed=embed, hidden=True)
 
