@@ -205,7 +205,7 @@ class Timestamp(Cog):
             td = timedelta(days=days, hours=hours, minutes=minutes)
             time = time + td
             
-            time.replace(tzinfo=timestamp.utc)
+            time.replace(tzinfo=timezone.utc)
             
             ts = int(time.timestamp())
             embed = Embed(
