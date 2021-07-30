@@ -8,7 +8,7 @@ from discord_slash.utils.manage_commands import create_option, create_choice
 from bot import DiscordModeratorWumpus
 from bot.utils import timestamp_validity
 
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta
 import dateutil.tz
 from calendar import month_name
 
@@ -147,7 +147,6 @@ class Timestamp(Cog):
     )
     async def _timestamp_now(self, ctx: SlashContext):
         time = datetime.utcnow()
-        time.replace(tzinfo=timezone.utc)
         embed = Embed(title="Current Time", color=Colour.blurple())
         embed.add_field(
             name="UTC Time", value=time.strftime("%A, %B %d, %Y %-I:%M %p"), inline=False
@@ -204,9 +203,7 @@ class Timestamp(Cog):
             time = datetime.utcnow()
             td = timedelta(days=days, hours=hours, minutes=minutes)
             time = time + td
-            
-            time.replace(tzinfo=timezone.utc)
-            
+
             ts = int(time.timestamp())
             embed = Embed(
                 title="Relative Time", color=Colour.blurple(), description=f"Time shifted by {td}"
