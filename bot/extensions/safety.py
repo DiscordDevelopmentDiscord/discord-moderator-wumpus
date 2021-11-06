@@ -6,7 +6,7 @@ from discord_slash.context import SlashContext
 from discord_slash.utils.manage_commands import create_option, create_choice
 
 from bot import DiscordModeratorWumpus
-from bot.utils import support_api
+from bot.utils import safety_api
 from bot.constants import SAFETY_CATEGORY_NAMES
 
 
