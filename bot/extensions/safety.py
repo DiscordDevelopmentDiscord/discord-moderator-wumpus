@@ -34,7 +34,7 @@ class Safety(Cog):
     )
     async def _safety_category(self, ctx: SlashContext, number: int):
         if number in SAFETY_CATEGORY_NAMES:
-            results = await support_api.get_api(category=number)
+            results = await safety_api.get_api(category=number)
             embed = Embed(colour=Colour.blurple(), description=f"*{SAFETY_CATEGORY_NAMES[number]}*")
             embed.set_author(name=f"Discord Safety Portal")
             for result in results:
@@ -63,7 +63,7 @@ class Safety(Cog):
     async def _safety_search(self, ctx: SlashContext, terms: str):
         embed = Embed(colour=Colour.blurple(), description=f"Search results for `{terms}`")
         embed.set_author(name="Discord Safety Search")
-        for result in await support_api.get_api(query_string=terms):
+        for result in await safety_api.get_api(query_string=terms):
             embed.add_field(
                 name=result["name"],
                 value=result["url"],
