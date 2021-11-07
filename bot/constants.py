@@ -136,7 +136,7 @@ SAFETY_IDS = [
     360043712172,
     360043712232,
     360044157931,
-]
+] # ID's in order found on https://discord.com/safety from left to right categories, top to bottom.
 SAFETY_CATEGORY_NAMES = {
     360009069551: "Controlling Your Experience",
     360009069571: "Parents & Educators",
