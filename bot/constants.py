@@ -115,28 +115,28 @@ TIMESTAMP_RELATIVE_BOUNDARIES = [
 
 SAFETY_API_ENDPOINT = "https://discordsafetyportal.zendesk.com/api/v2/help_center/articles/search"
 SAFETY_IDS = [
-    360043857751,
-    360043653152,
-    360044103531,
-    360044103651,
-    360044103771,
-    360043653552,
-    360044104071,
-    360044149331,
-    360043700632,
-    360044153831,
-    360044154611,
-    360044149591,
-    360044154771,
-    360057166133,
-    360043709612,
-    360044158971,
-    360043712132,
-    360044159011,
-    360043712172,
-    360043712232,
-    360044157931,
-] # ID's in order found on https://discord.com/safety from left to right categories, top to bottom.
+    360043857751,  # Four steps to a super safe account
+    360043653152,  # Four steps to a super safe server
+    360044103531,  # Role of administrators and moderators on Discord
+    360044103651,  # Reporting problems to Discord
+    360044103771,  # Mental health on Discord
+    360043653552,  # Adult content on Discord
+    360044104071,  # Tips against spam and hacking
+    360044149331,  # What is Discord?
+    360043700632,  # Discord's commitment to a safe and trusted experience
+    360044153831,  # Helping your teen stay safe on Discord
+    360044154611,  # Talking about online safety with your teen
+    360044149591,  # Answering parents' and educators' top questions
+    360044154771,  # If your teen encounters an issue
+    360057166133,  # Working with CARU to protect users on Discord
+    360043709612,  # Our policies
+    360044158971,  # Enforcing our rules
+    360043712132,  # How we investigate
+    360044159011,  # What actions we take
+    360043712172,  # How you can appeal our actions
+    360043712232,  # Discord's Transparency Report
+    360044157931,  # Working with law enforcement
+]  # ID's in order found on https://discord.com/safety from left to right categories, top to bottom.
 SAFETY_CATEGORY_NAMES = {
     360009069551: "Controlling Your Experience",
     360009069571: "Parents & Educators",
