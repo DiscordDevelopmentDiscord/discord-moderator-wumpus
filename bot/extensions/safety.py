@@ -64,6 +64,8 @@ class Safety(Cog):
     )
     async def _safety_search(self, ctx: SlashContext, terms: str):
         terms_safe = terms.replace("`", "")
+        if len(terms_safe) == 0:
+            terms_safe = " "
         embed = Embed(colour=Colour.blurple(), description=f"Search results for `{terms_safe}`")
         embed.set_author(name="Discord Safety Search")
         results = await safety_api.get_api(query_string=terms)
