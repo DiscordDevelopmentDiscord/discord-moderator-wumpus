@@ -35,16 +35,17 @@ class Safety(Cog):
     )
     async def _safety_category(self, ctx: SlashContext, number: int):
         if number in SAFETY_CATEGORY_NAMES:
-            results = await safety_api.get_api(category=number)
+            results = await safety_api.get_api(ctx, category=number)
             embed = Embed(colour=Colour.blurple(), description=f"*{SAFETY_CATEGORY_NAMES[number]}*")
             embed.set_author(name=f"Discord Safety Portal")
-            for result in results:
-                embed.add_field(
-                    name=result["name"],
-                    value=result["url"],
-                    inline=False,
-                )
-            await ctx.send(embed=embed)
+            if type(results) != bool:
+                for result in results:
+                    embed.add_field(
+                        name=result["name"],
+                        value=result["url"],
+                        inline=False,
+                    )
+                await ctx.send(embed=embed)
         else:
             logger.warning(f"Input of series {number} given by {ctx.author}")
             await ctx.send(content=f"Series {number} could not be found", hidden=True)
@@ -68,14 +69,15 @@ class Safety(Cog):
             terms_safe = " "
         embed = Embed(colour=Colour.blurple(), description=f"Search results for `{terms_safe}`")
         embed.set_author(name="Discord Safety Search")
-        results = await safety_api.get_api(query_string=terms)
-        for result in results:
-            embed.add_field(
-                name=result["name"],
-                value=result["url"],
-                inline=False,
-            )
-        await ctx.send(embed=embed)
+        results = await safety_api.get_api(ctx, query_string=terms)
+        if type(results) != bool:
+            for result in results:
+                embed.add_field(
+                    name=result["name"],
+                    value=result["url"],
+                    inline=False,
+                )
+            await ctx.send(embed=embed)
 
 
 def setup(bot: DiscordModeratorWumpus) -> None:
