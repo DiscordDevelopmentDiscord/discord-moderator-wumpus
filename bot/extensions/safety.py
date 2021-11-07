@@ -46,7 +46,7 @@ class Safety(Cog):
                 )
             await ctx.send(embed=embed)
         else:
-            logger.warning(f"Input of series {number} given by {ctx.author}"
+            logger.warning(f"Input of series {number} given by {ctx.author}")
             await ctx.send(content=f"Series {number} could not be found", hidden=True)
 
     @cog_ext.cog_subcommand(
