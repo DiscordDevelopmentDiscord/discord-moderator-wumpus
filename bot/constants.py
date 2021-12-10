@@ -15,6 +15,8 @@ GUILDS_PRONOUN_ROLES = {
         "he-him": 740020232315207770,
         "she-her": 740020247192404008,
         "they-them": 740020260521902193,
+        "she-they": 918923092502388807,
+        "he-they": 918923159019880458,
         "any": 834100284597862456,
         "ask": 834156042283253760,
     },
@@ -40,6 +42,14 @@ PRONOUN_OPTIONS = [
     create_choice(
         value="they-them",
         name="They/Them",
+    ),
+    create_choice(
+        value="she-they",
+        name="She/They",
+    ),
+    create_choice(
+        value="he-they",
+        name="He/They",
     ),
     create_choice(
         value="any",
