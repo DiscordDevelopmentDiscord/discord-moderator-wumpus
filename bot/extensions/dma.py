@@ -126,8 +126,11 @@ class DMA(Cog):
             )
         ],
     )
-    async def _dma_search(self, ctx: SlashContext, terms: str):
-        embed = Embed(colour=Colour.blurple(), description=f"Search results for `{terms}`")
+    async def _dma_search(self, ctx: SlashContext, terms: str):        
+        terms_safe = terms.replace("`", "")
+        if len(terms_safe) == 0:
+            terms_safe = " "
+        embed = Embed(colour=Colour.blurple(), description=f"Search results for `{terms_safe}`")
         embed.set_author(name="DMA Search")
         for result in await dma_api.get_search_api(query_string=terms):
             embed.add_field(
